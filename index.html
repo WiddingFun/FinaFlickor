@@ -520,13 +520,14 @@
     <!-- Bakgrundsfrågor -->
     <fieldset>
       <legend>Bakgrundsfrågor</legend>
-      <label>Namn:<br>
-        <input type="text" name="namn">
+       <label>Namn:<br>
+      <input type="text" id="namn" name="namn" required>
       </label><br><br>
 
       <label>Vilken stad bor du i?<br>
-        <input type="text" name="stad">
+      <input type="text" id="stad" name="stad" required>
       </label><br><br>
+
 
       <label>Civilstatus:<br>
         <select name="civilstatus">
@@ -547,14 +548,43 @@
       <textarea name="Slutfraga" rows="4" cols="50"></textarea>
     </fieldset>
 
+  
+    
+    <input type="hidden" id="_subject" name="_subject" value="">
+
+    
+    
     <button type="submit" class="submit-button">Skicka</button>
     <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_next" value="https://widdingfun.github.io/FinaFlickor/tack.html">
 
   </form>
+
+  
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", () => {
+    const namn = document.getElementById("namn").value;
+    const stad = document.getElementById("stad").value;
+
+    const subject = `Enkät, ${namn}, ${stad}`;
+    document.getElementById("_subject").value = subject;
+  });
+});
+</script>
+
+
+
+
+
+  
 </body>
 
 </html>
+
 
 
 
